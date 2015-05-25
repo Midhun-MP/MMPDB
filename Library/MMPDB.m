@@ -134,12 +134,18 @@
     BOOL status = false;
     if (sqlite3_prepare(__db, [query UTF8String], -1, &__stmt, NULL) == SQLITE_OK)
     {
-        status = true;
-        
-
+        status     = true;
         _resultSet = [[MMPDBResultSet alloc] initWithPreparedStatement:__stmt andDB:__db];
     }
     return status;
+}
+
+/*!
+ * Clean Up
+ */
+- (void)dealloc
+{
+    [self closeDB];
 }
 
 

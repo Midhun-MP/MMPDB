@@ -26,7 +26,8 @@
     NSString *fromPath = [[NSBundle mainBundle] pathForResource:@"Database" ofType:@"sqlite"];
     NSString *toPath   = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, -1, YES) objectAtIndex:0] stringByAppendingPathComponent:@"Database.sqlite"];
     [db copyDB:fromPath to:toPath reWrite:NO];
-    [db initializeDBWithPath:toPath];
+    //[db initializeDBWithPath:toPath];
+    [db initializeDBWithName:@"Database.sqlite"];
     [db executeQuery:@"SELECT * FROM Contacts"];
     
     _dbResult = [db resultSet];
